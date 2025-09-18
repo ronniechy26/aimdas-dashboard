@@ -1,22 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, AreaChart, Area, ComposedChart } from 'recharts';
-import { Search, Filter, Download, MapPin, TrendingUp, Package, Wrench, AlertTriangle, Calendar, Activity, BarChart3, Zap, ChartNoAxesCombined } from 'lucide-react';
+import { MapPin, TrendingUp, Package, Wrench, AlertTriangle, Calendar, Activity, BarChart3, Zap, ChartNoAxesCombined } from 'lucide-react';
+import Header from '@/components/header';
+import FilterSearch from '@/components/filter-search';
+import MachineryDistribution from '@/components/ui/dashboard/machinery-distribution';
 
 const AgricultureDashboard = () => {
-  const [selectedRegion, setSelectedRegion] = useState('All Regions');
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
 
-  // Sample data - replace with your actual data
-  const machineryByRegion = [
-    { region: 'NCR', tractors: 1250, harvesters: 450, plows: 890, total: 2590 },
-    { region: 'CAR', tractors: 2100, harvesters: 780, plows: 1340, total: 4220 },
-    { region: 'Region I', tractors: 3200, harvesters: 1200, plows: 2100, total: 6500 },
-    { region: 'Region II', tractors: 2800, harvesters: 980, plows: 1800, total: 5580 },
-    { region: 'Region III', tractors: 4100, harvesters: 1500, plows: 2700, total: 8300 },
-    { region: 'Region IV-A', tractors: 3500, harvesters: 1300, plows: 2200, total: 7000 },
-  ];
+ 
 
   const machineryTypes = [
     { name: 'Tractors', value: 17950, color: '#2563eb', icon: '🚜' },
@@ -107,9 +99,6 @@ const AgricultureDashboard = () => {
     { category: 'Training', amount: 44000, percentage: 1 },
   ];
 
-  const regions = ['All Regions', 'NCR', 'CAR', 'Region I', 'Region II', 'Region III', 'Region IV-A'];
-  const categories = ['All Categories', 'Tractors', 'Harvesters', 'Plows', 'Seeders', 'Sprayers'];
-
   const getHeatMapColor = (density: number) => {
     if (density >= 80) return '#dc2626';
     if (density >= 60) return '#f59e0b';
@@ -121,79 +110,13 @@ const AgricultureDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       {/* Fixed Header */}
-      <div className="fixed top-0 w-full bg-white shadow-lg border-b border-gray-200 z-50">
-        <div className="flex max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-          <div className="flex flex-wrap w-full items-center justify-between gap-3">
-            {/* Logo + Title */}
-            <div className="flex items-center space-x-2 sm:space-x-4 min-w-0 flex-1">
-              <div className="bg-gradient-to-r from-green-600 to-blue-600 p-2 sm:p-3 rounded-xl shadow-lg flex-shrink-0">
-                <ChartNoAxesCombined className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <h1 className="text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 whitespace-normal sm:truncate">
-                  Agriculture Infrastructure & Machinery Data Analytics System
-                </h1>
-                <p className="text-[11px] sm:text-xs md:text-sm lg:text-base text-gray-600 hidden sm:block whitespace-normal sm:truncate">
-                  Bureau of Agricultural and Fisheries Engineering - Philippines
-                </p>
-              </div>
-            </div>
-
-            {/* Action Button */}
-            <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-              <button className="flex items-center space-x-1 sm:space-x-2 bg-blue-600 text-white px-2 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-xs sm:text-sm">
-                <Download className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span className="hidden sm:inline">Export Data</span>
-                <span className="sm:hidden">Export</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <Header />
       {/* Content with top padding to account for fixed header */}
       <div className="pt-16 sm:pt-20">
-
         <div className="max-w-[100rem] mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          {/* Filters */}
-          <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 mb-6 sm:mb-8 border border-gray-100">
-            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-              <div className="flex items-center space-x-2 flex-1 min-w-0">
-                <Search className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                <input
-                  type="text"
-                  placeholder="Search machinery by ID or location..."
-                  className="border border-gray-300 rounded-lg px-3 sm:px-4 py-2 w-full min-w-0 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                />
-              </div>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                <div className="flex items-center space-x-2">
-                  <Filter className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                  <select
-                    value={selectedRegion}
-                    onChange={(e) => setSelectedRegion(e.target.value)}
-                    className="border border-gray-300 rounded-lg px-3 sm:px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm min-w-0"
-                  >
-                    {regions.map(region => (
-                      <option key={region} value={region}>{region}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 sm:px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm min-w-0"
-                >
-                  {categories.map(category => (
-                    <option key={category} value={category}>{category}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
+          {/* filter */}
+          <FilterSearch />
           {/* Key Metrics */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-8">
             <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl p-4 sm:p-6 shadow-lg">
@@ -244,9 +167,9 @@ const AgricultureDashboard = () => {
           {/* Charts Section */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
             {/* Regional Distribution */}
-            <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-100">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Machinery Distribution by Region</h3>
-              <div className="w-full h-64 sm:h-80">
+
+            {/* <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Machinery Distribution by Region</h3> */}
+            {/* <div className="w-full h-64 sm:h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={machineryByRegion}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -267,8 +190,9 @@ const AgricultureDashboard = () => {
                     <Bar dataKey="plows" fill="#16a34a" name="Plows" />
                   </BarChart>
                 </ResponsiveContainer>
-              </div>
-            </div>
+              </div> */}
+            <MachineryDistribution />
+
 
             {/* Machinery Types */}
             <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 border border-gray-100">
