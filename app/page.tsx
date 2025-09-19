@@ -4,12 +4,12 @@ import { Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChar
 import { AlertTriangle, Activity, BarChart3, Zap, } from 'lucide-react';
 import Header from '@/components/header';
 import FilterSearch from '@/components/filter-search';
-import MachineryDistribution from '@/components/ui/dashboard/machinery-distribution';
-import MachineryTypes from '@/components/ui/dashboard/machinery-types';
-import StatsCard from '@/components/ui/dashboard/stats-card';
-import HeatMap from '@/components/ui/dashboard/heat-map';
-import MachineryProgram from '@/components/ui/dashboard/machinery-program';
-import MachineryPerYear from '@/components/ui/dashboard/machinery-per-year';
+import MachineryDistribution from '@/components/dashboard/machinery-distribution';
+import MachineryTypes from '@/components/dashboard/machinery-types';
+import StatsCard from '@/components/dashboard/stats-card';
+import HeatMap from '@/components/dashboard/heat-map';
+import MachineryProgram from '@/components/dashboard/machinery-program';
+import MachineryPerYear from '@/components/dashboard/machinery-per-year';
 
 const AgricultureDashboard = () => {
 

@@ -11,7 +11,7 @@ export default function Header() {
               <ChartNoAxesCombined className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
             </div>
             <div className="min-w-0 flex-1">
-              <h1 className="text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 whitespace-normal sm:truncate">
+              <h1 className="font-bold text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl text-gray-900 whitespace-normal sm:truncate">
                 Agriculture Infrastructure & Machinery Data Analytics System
               </h1>
               <p className="text-[11px] sm:text-xs md:text-sm lg:text-base text-gray-600 hidden sm:block whitespace-normal sm:truncate">
