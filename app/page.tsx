@@ -9,6 +9,7 @@ import MachineryTypes from '@/components/ui/dashboard/machinery-types';
 import StatsCard from '@/components/ui/dashboard/stats-card';
 import HeatMap from '@/components/ui/dashboard/heat-map';
 import MachineryProgram from '@/components/ui/dashboard/machinery-program';
+import MachineryPerYear from '@/components/ui/dashboard/machinery-per-year';
 
 const AgricultureDashboard = () => {
 
@@ -88,31 +89,7 @@ const AgricultureDashboard = () => {
           <div className="grid grid-cols-2 grid-rows-2 gap-4 mb-8">
             <HeatMap />
             <MachineryProgram />
-            <div className="col-start-2 bg-white rounded-xl shadow-md p-6 border border-gray-100">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Seasonal Usage Patterns</h3>
-                <Activity className="w-5 h-5 text-green-600" />
-              </div>
-              <ResponsiveContainer width="100%" height={300}>
-                <AreaChart data={seasonalData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                  <XAxis dataKey="month" tick={{ fontSize: 12 }} />
-                  <YAxis tick={{ fontSize: 12 }} />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: '#1f2937',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '8px'
-                    }}
-                  />
-                  <Area type="monotone" dataKey="tractors" stackId="1" stroke="#2563eb" fill="#2563eb" fillOpacity={0.6} />
-                  <Area type="monotone" dataKey="harvesters" stackId="1" stroke="#dc2626" fill="#dc2626" fillOpacity={0.6} />
-                  <Area type="monotone" dataKey="plows" stackId="1" stroke="#16a34a" fill="#16a34a" fillOpacity={0.6} />
-                  <Area type="monotone" dataKey="irrigation" stackId="1" stroke="#f59e0b" fill="#f59e0b" fillOpacity={0.6} />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
+            <MachineryPerYear />
           </div>
 
 
