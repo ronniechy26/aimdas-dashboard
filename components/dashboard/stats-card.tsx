@@ -1,4 +1,4 @@
-import { MapPin, Package, TrendingUp, Wrench } from "lucide-react";
+import { MapPin, TractorIcon, TrendingUp, Wrench } from "lucide-react";
 
 const machineryTypes = [
   { name: 'Tractors', value: 17950, color: '#2563eb', icon: '🚜' },
@@ -21,7 +21,7 @@ export default function StatsCard() {
             <p className="text-xl sm:text-3xl font-bold truncate">{totalMachinery.toLocaleString()}</p>
             <p className="text-blue-100 text-xs mt-1">+5.2% from last quarter</p>
           </div>
-          <Package className="w-8 sm:w-12 h-8 sm:h-12 text-blue-200 flex-shrink-0" />
+          <TractorIcon className="w-8 sm:w-12 h-8 sm:h-12 text-blue-200 flex-shrink-0" />
         </div>
       </div>
 

@@ -9,7 +9,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "AIMDAS",
+  title: "AIMDAS | BAFE",
   description: "Agriculture Infrastructure & Machinery Data Analytics System - Bureau of Agricultural and Fisheries Engineering",
 };
 
